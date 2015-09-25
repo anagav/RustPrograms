@@ -1,5 +1,4 @@
 #[derive(Debug)]
-
 struct Node<T> {
     data: T,
     left: Option<Box<Node<T>>>,
@@ -13,13 +12,19 @@ impl<T> Node<T>{
 }
 
 
-fn in_order_traversal<T>(head: &Node<T>) {
+fn in_order_traversal<T>(head: &Node<i32>) {
 	match *head {
 
-        Node{data,left,right} => {
+        Node::<i32>{data,ref left, ref right} => {
+                match *left {
+                    Some(ref value) => in_order_traversal::<T>(&*value),
+                    None => {}
+                }
                 println!("{:?}", data);
-                in_order_traversal::<T>(left.as_ref::<'r>().unwrap());
-                in_order_traversal::<T>(right.as_mut::<'r>().unwrap());
+                match *right {
+                    Some(ref value) => in_order_traversal::<T>(&*value),
+                    None => {}
+                }
             }
 
 	}
@@ -33,6 +38,6 @@ pub fn run(){
 	root.left.as_mut().unwrap().left = Some(Box::new(Node::new(6)));
 	root.left.as_mut().unwrap().right = Some(Box::new(Node::new(7)));
 	root.right = Some(Box::new(Node::new(5)));
-
-	println!("{:?}", root);
+    in_order_traversal::<i32>(&root);
+	//println!("{:?}", root);
 }
