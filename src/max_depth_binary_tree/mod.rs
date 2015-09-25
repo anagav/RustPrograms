@@ -17,12 +17,12 @@ fn in_order_traversal<T>(head: &Node<i32>) {
 
         Node::<i32>{data,ref left, ref right} => {
                 match *left {
-                    Some(ref value) => in_order_traversal::<T>(&*value),
+                    Some(ref value) => in_order_traversal::<T>(value),
                     None => {}
                 }
                 println!("{:?}", data);
                 match *right {
-                    Some(ref value) => in_order_traversal::<T>(&*value),
+                    Some(ref value) => in_order_traversal::<T>(value),
                     None => {}
                 }
             }
