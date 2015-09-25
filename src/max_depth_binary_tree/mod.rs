@@ -33,11 +33,11 @@ fn in_order_traversal<T>(head: &Node<i32>) {
 
 
 pub fn run(){
-	let mut root: Node<i32> = Node::new(3);
-	root.left = Some(Box::new(Node::new(4)));
-	root.left.as_mut().unwrap().left = Some(Box::new(Node::new(6)));
-	root.left.as_mut().unwrap().right = Some(Box::new(Node::new(7)));
-	root.right = Some(Box::new(Node::new(5)));
+    let mut root: Node<i32> = Node::new(3);
+    root.left = Some(Box::new(Node::new(4)));
+    root.left.as_mut().unwrap().left = Some(Box::new(Node::new(6)));
+    root.left.as_mut().unwrap().right = Some(Box::new(Node::new(7)));
+    root.right = Some(Box::new(Node::new(5)));
     in_order_traversal::<i32>(&root);
 	//println!("{:?}", root);
 }
