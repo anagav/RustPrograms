@@ -39,9 +39,7 @@ fn max_depth_tree<T: std::fmt::Display>(node: &Option<Box<Node<T>>>) -> i32 {
             return 0;
         },
         Some(ref node) => {
-            let left_height = max_depth_tree::<T>(&node.left);
-            let right_height = max_depth_tree::<T>(&node.right);
-            return if left_height > right_height { left_height + 1 } else { right_height + 1 }
+            return 1 + std::cmp::max(max_depth_tree::<T>(&node.left),max_depth_tree::<T>(&node.right));
         }
     }
 }
